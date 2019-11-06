@@ -57,7 +57,7 @@ public class UserStatistic extends LocalCacheListener<UserStatisticCacheType> {
 		
 		while(!Thread.currentThread().isInterrupted()){
 			if(!this.cache.isEmpty()){
-				long cmpTs = System.currentTimeMillis() - LOCAL_EXPIRE_MS;
+				long cmpTs = System.currentTimeMillis() - LOCAL_EXPIRE_MS * 24;
 				
 				this.cache.entrySet().parallelStream().forEach(item -> {
 					UserStatObj stat = item.getValue();
