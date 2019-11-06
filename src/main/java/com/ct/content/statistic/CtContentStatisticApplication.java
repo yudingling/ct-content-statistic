@@ -2,11 +2,9 @@ package com.ct.content.statistic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zeasn.common.bootstrap.MySpringBootApplication;
-import com.zeasn.common.elasticsearch.EsRepositoryImpl;
 import com.zeasn.common.feign.MyEnableFeignClients;
 
 import tk.mybatis.spring.annotation.MapperScan;
@@ -16,7 +14,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MyEnableFeignClients
 @EnableTransactionManagement(proxyTargetClass = true)
 @MapperScan(basePackages = {"com.ct.**.mapper"})
-@EnableElasticsearchRepositories(basePackages = {"com.ct"}, repositoryBaseClass = EsRepositoryImpl.class)
 public class CtContentStatisticApplication {
 
 	public static void main(String[] args) {
