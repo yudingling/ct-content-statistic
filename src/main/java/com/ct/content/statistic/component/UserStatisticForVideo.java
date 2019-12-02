@@ -186,7 +186,7 @@ public class UserStatisticForVideo extends LocalCacheListener<UserStatisticForVi
 			this.likeMap.remove(itemId);
 		}
 		public boolean isLiked(long itemId) {
-			return this.likeMap.contains(itemId);
+			return this.likeMap.containsKey(itemId);
 		}
 		
 		
@@ -197,7 +197,7 @@ public class UserStatisticForVideo extends LocalCacheListener<UserStatisticForVi
 			this.collectMap.remove(itemId);
 		}
 		public boolean isCollected(long itemId) {
-			return this.collectMap.contains(itemId);
+			return this.collectMap.containsKey(itemId);
 		}
 		
 		public void sub(long uId) {
@@ -207,7 +207,7 @@ public class UserStatisticForVideo extends LocalCacheListener<UserStatisticForVi
 			this.subMap.remove(uId);
 		}
 		public boolean isSubed(long uId) {
-			return this.subMap.contains(uId);
+			return this.subMap.containsKey(uId);
 		}
 		
 		public Long getTs() {
