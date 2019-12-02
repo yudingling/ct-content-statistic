@@ -1,11 +1,16 @@
 package com.ct.content.statistic.service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.ct.common.mapper.ZUserCollectMapper;
+import com.ct.common.mapper.ZUserLikeMapper;
 import com.ct.common.mapper.ZUserStatisticMapper;
+import com.ct.common.mapper.ZUserSubscribeMapper;
 import com.ct.common.model.ProtectAction;
 import com.ct.common.model.db.ZUserStatistic;
 import com.ct.content.statistic.model.UserStatProtectObj;
@@ -17,9 +22,27 @@ import com.zeasn.common.util.DbException;
 public class UserStatisticService implements IWriteBack<UserStatProtectObj> {
 	@Autowired
 	private ZUserStatisticMapper userStatMapper;
+	@Autowired
+	private ZUserLikeMapper likedMapper;
+	@Autowired
+	private ZUserCollectMapper collectedMapper;
+	@Autowired
+	private ZUserSubscribeMapper subedMapper;
 	
 	@Autowired
 	private Daemon daemon;
+	
+	public List<Long> getAllLikedItems(long uId){
+		return this.likedMapper.getAllLikedItems(uId);
+	}
+	
+	public List<Long> getAllCollectedItems(long uId){
+		return this.collectedMapper.getAllCollectedItems(uId);
+	}
+	
+	public List<Long> getAllSubedUsers(long uId){
+		return this.subedMapper.getUsers(uId);
+	}
 	
 	public Map<Long, ZUserStatistic> getStatistic(Set<Long> uIds){
 		return this.userStatMapper.getUsersStatistic(uIds);
